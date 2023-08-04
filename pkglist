@@ -119,7 +119,7 @@ if (param('pkg')) {
 } else {
 	print "<h2>Packages</h2>\n";
 
-print "The next version of Revol will be package based, using ";
+print "Version 2.0 of Revol is package based, using ";
 print "<a href=\"../spkg.html\">spkg</a> to build filesystems automatically. ";
 print "This is a list of packages currently available in the ";
 print "<a href=\"../$pkgdir/\">repository</a>.";
