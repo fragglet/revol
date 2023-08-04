@@ -1,12 +1,11 @@
 #!/usr/bin/perl -w
 
 use strict;
-use CGI qw(param);
+#use CGI qw(param);
 
 my %packages;
 
 my $pkgdir="spkg/unstable";
-my $pkgpage="pkglist.html";
 my $package_file = "Packages";
 
 # get md5sum of a file
@@ -76,6 +75,11 @@ sub pkg_param {
 	print "<b>$desc:</b> $pkg->{$name} <br>\n";
 }
 
+sub param {
+	my ($var) = @_;
+	return $ENV{$var};
+}
+
 packages_load;
 
 if (param('pkg')) {
@@ -105,13 +109,13 @@ if (param('pkg')) {
 
 		foreach (@$depends) {
 			print "<li> ";
-			print "<a href=\"$pkgpage?pkg=$_->{name}\">";
+			print "<a href=\"$_->{name}.html\">";
 			print "$_->{name}</a>\n";
 		}
 		print "</ul>\n";
 	}
 
-	print "<p> <a href=\"$pkgpage\">back</a>\n";
+	print "<p> <a href=\"pkglist.html\">back</a>\n";
 } else {
 	print "<h2>Packages</h2>\n";
 
@@ -122,7 +126,7 @@ print "<a href=\"$pkgdir/\">repository</a>.";
 	print "<ul>\n";
 	foreach(sort(keys %packages)) {
 		print "<li> ";
-		print "<a href=\"$pkgpage?pkg=$_\">$_</a>\n";
+		print "<a href=\"$_.html\">$_</a>\n";
 	}
 	print "</ul>\n";
 }
