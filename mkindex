@@ -1,0 +1,14 @@
+#!/bin/bash
+
+mkhtml() {
+	echo "<html><body><ul>"
+	for d in *; do
+		if [ "$d" != index.html ]; then
+			echo "<li><a href='$d'>$d</a>"
+		fi
+	done
+	echo "</ul></body></html>"
+}
+
+mkhtml > index.html
+
