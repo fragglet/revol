@@ -5,12 +5,12 @@
 
 <body bgcolor="white" text="black" link="black" vlink="black">
 <h1>Revol</h1>
-<a href="index.shtml">Main</a> |
-<a href="sshot.shtml">Screenshots</a> |
-<a href="faq.shtml">FAQ</a> | 
-<a href="download.shtml">Downloads</a> |
-<a href="links.shtml">Links</a> |
-<a href="dev.shtml">Development Stuff</a> |
-<a href="pkglist.shtml">Packages</a>
+<a href="index.html">Main</a> |
+<a href="sshot.html">Screenshots</a> |
+<a href="faq.html">FAQ</a> | 
+<a href="download.html">Downloads</a> |
+<a href="links.html">Links</a> |
+<a href="dev.html">Development Stuff</a> |
+<a href="pkglist.html">Packages</a>
 <hr>
 
