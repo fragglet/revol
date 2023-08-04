@@ -24,7 +24,7 @@ HEADER='
 
 FOOTER='
 <hr>
-<a href="mailto:fraggle@nospam.alkali.org">Simon Howard</a>. <br>
+<a href="mailto:fraggle@nospam.gmail.com">Simon Howard</a>. <br>
 I am not associated with Psion Digital.
 
 </body>
