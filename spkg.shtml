@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd"> 
+
+<html>
+
+<!--#include virtual="header"-->
+
+<h2> Shonky Package Manager </h2>
+
+<p>
+spkg is a small package management system I have written for Revol. It
+works as a "cross compiled" package system. Whereas most package managers
+run on their target system, this builds the root filesystem automatically
+on a host system. It is written in perl and is in some ways inspired by
+debians dpkg.
+</p>
+
+<p>
+I plan to use this system as the base for the next version of Revol.
+</p>
+
+<p align="right"
+<a href="/cgi-bin/showstats.cgi?fraggle-spkg">
+<!--#include virtual="/cgi-bin/stats.cgi?fraggle-spkg"-->
+</a>
+</p>
+
+<a href="http://freshmeat.net/projects/spkg/">freshmeat page</a>
+
+<h3>Download</h3>
+
+<ul>
+<li> <b> v0.9</b>
+    <ul> 
+    <li> <a href="spkg/spkg-0.9.tar.gz">spkg-0.9.tar.gz</a>
+    </ul>
+</ul>
+
+<!--#include virtual="footer"-->
+
+</html>
+

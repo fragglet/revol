@@ -1,0 +1,129 @@
+#!/usr/bin/perl -w
+
+use strict;
+use CGI qw(param);
+
+my %packages;
+
+my $pkgdir="spkg/unstable";
+my $pkgpage="pkglist.shtml";
+my $package_file = "Packages";
+
+# get md5sum of a file
+ 
+sub packages_load {
+	my $thispkg = {};
+	$thispkg->{depends} = [];
+
+	open(PACKAGES, "$pkgdir/$package_file") 
+			or die("Cant open packages file");
+
+	while (<PACKAGES>) {
+		chomp;
+
+		if ($_ eq '' && $thispkg->{name}) {
+			bless $thispkg;
+			$packages{$thispkg->{name}} = $thispkg;
+			$thispkg = {};
+			$thispkg->{depends} = [];
+
+		} elsif (/^\w+\:/) {
+			my ($var, $val) = /^(\w+)\:\s*(.*)/;
+
+			if ($var eq 'Package') {
+				$thispkg->{name} = $val;
+			} elsif ($var eq 'Filename') {
+				$thispkg->{file} = $val;
+			} elsif ($var eq 'Version') {
+				$thispkg->{version} = $val;
+			} elsif ($var eq 'MD5sum') {
+				$thispkg->{md5} = $val;
+			} elsif ($var eq 'Size') {
+				$thispkg->{filesize} = $val;
+			} elsif ($var eq 'Description') {
+				if ($thispkg->{description}) {
+					$thispkg->{longdesc} .= "$val\n";
+				} else {
+					$thispkg->{description} = $val;
+				}
+			} elsif ($var eq 'Depend') {
+				my $deppkg = $packages{$val};
+				my $depends = $thispkg->{depends};
+
+				if (!$deppkg) {
+					die "package not found: $val\n";
+				}
+				
+				push @$depends, $deppkg;
+			} else {
+				die "Invalid field: $var\n";
+			}
+		}
+	}
+
+	if ($thispkg->{name}) {
+		$packages{$thispkg->{name}} = $thispkg;
+	}
+
+	close(PACKAGES);
+}
+
+sub pkg_param {
+	my ($desc, $name, $pkg) = @_;
+
+	return if !$pkg->{$name};
+
+	print "<b>$desc:</b> $pkg->{$name} <br>\n";
+}
+
+packages_load;
+
+if (param('pkg')) {
+	my $pkg = $packages{param('pkg')};
+
+	die "package not found" if !$pkg;
+
+	print "<h2>$pkg->{name}</h2>\n";
+
+	pkg_param('Version', 'version', $pkg);
+	if ($pkg->{file}) {
+		print "<b>File:</b> ";
+		print "<a href=\"$pkgdir/$pkg->{file}\">$pkg->{file}</a>";
+		print "<br>\n";
+	}
+	pkg_param('File Size', 'filesize', $pkg);
+	pkg_param('File MD5SUM', 'md5', $pkg);
+	pkg_param('Description', 'description', $pkg);
+
+	print $pkg->{longdesc} if $pkg->{longdesc};
+
+	my $depends = $pkg->{depends};
+
+	if (scalar @$depends > 0) {
+		print "<h3>Dependencies</h3>\n";
+		print "<ul>\n";
+
+		foreach (@$depends) {
+			print "<li> ";
+			print "<a href=\"$pkgpage?pkg=$_->{name}\">";
+			print "$_->{name}</a>\n";
+		}
+		print "</ul>\n";
+	}
+
+	print "<p> <a href=\"$pkgpage\">back</a>\n";
+} else {
+	print "<h2>Packages</h2>\n";
+
+print "The next version of Revol will be package based, using ";
+print "<a href=\"spkg.shtml\">spkg</a> to build filesystems automatically. ";
+print "This is a list of packages currently available in the ";
+print "<a href=\"$pkgdir/\">repository</a>.";
+	print "<ul>\n";
+	foreach(sort(keys %packages)) {
+		print "<li> ";
+		print "<a href=\"$pkgpage?pkg=$_\">$_</a>\n";
+	}
+	print "</ul>\n";
+}
+

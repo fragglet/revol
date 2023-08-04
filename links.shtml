@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd"> 
+
+<html>
+
+<!--#include virtual="header"-->
+
+<h2> Links </h2>
+
+<ul>
+
+<li> <a href="http://www.picogui.org/">PicoGUI</a>
+<li> <a href="http://www.psilinux.org/">PsiLinux</a>
+<li> <a href="http://thomas.de-ruiter.cx/projects/psion/">Taders Psion 5mx Linux pages</a>
+<li> <a href="http://revolinux.nm.ru/">Revo+ Linux</a>
+<li> <a href="http://www.emdebian.org/">Embedded Debian</a>
+<li> <a href="http://linux-7110.sourceforge.net/files/Kernels/5mx_and_Revo/">5mx kernel patch</a>
+<li> <a href="http://uclibc.org/">uClibc</a>
+<li> <a href="http://busybox.lineo.com/">Busybox</a>
+
+</ul>
+
+<!--#include virtual="footer"-->
+
+</html>
+

@@ -1,0 +1,212 @@
+These are emails from an employee at Psion who worked on the 5mx and
+provide some technical information. Thanks to Tony <tony@atomide.com> for
+forwarding me these.
+
+Date: Tue, 08 Aug 2000 20:52:12 +0100
+From: Atish Nazir <hashaday@littleworld.freeserve.co.uk>
+To: Peter Liniker <pl198@doc.ic.ac.uk>
+Subject: Re: [Linux-7110-psion] psion5mx (fwd)
+
+re:
+---
+> * the memory map
+---     
+        be more specific.  what would you like to access?
+
+re:
+---
+> * MMU details, esp. EPOC's MMU usage, so that ArLo can load the kernel
+> into memory, initialise FiPaBoL and start it
+---     
+        hard one, because i'm not too clued up on that aspect of base.  one
+solution would be to install yourself as a "PartnerOS" - something EPOC
+does have a provision for for the Philips smart phone of years ago.
+documentation is very sparse though.
+
+re:
+---
+> * ROM/serial/CF boot mechanism (latter two netbook only)
+---
+        hehehe boss and i wrote this bit :o)  protocol is basically YModem with
+a few optional extras - i.e. any terminal program will be okay.  the
+exact specifics of the S7 client is unknown to me as a contractor at
+Enterprise wrote it (a perpetually up beat guy).
+
+re:
+---
+> * ROM/RAM speeds
+---
+        varies according to machine _and_ when it was built in production
+cycle.  i.e. early machines have flash and later we switch to mask ROM
+(with a small patch flash, should it be needed).
+
+re:
+---
+> * interrupt handling
+---
+        erm, it works...
+
+re:
+---
+> * all the device interface specs:
+> --  CF slot/card
+---
+        function spec for ETNA - i'll find out, whom you have to speak about
+this or whether i can release this (quite possible, but remember to say
+thank you).
+
+re:
+---
+> --  PCMCIA slot/card
+---
+        functional spec for ASIC14 - ask Enterprise.
+
+re:
+---
+> --  sound in/out, audio codecs
+---
+        5, 5mx and Revo, sound out is identical (same drivers used in fact). 
+except on Revo, there's a slight pin move (can't remember what however,
+it wasn't the buzzline).  Revo sounds record is obviously disabled...
+
+        S7, go ask Enterprise...
+
+re:
+---
+> --  screen
+---
+        Eiger and Windermere have similar, but certainly different LCD
+controllers on board - you'll have to change you device driver.  i can't
+give more details, because i don't know any more here - never worked on
+that aspect.
+
+re:
+---
+> --  pointer
+---
+        ADC talks directly to main ASIC via SSP interface (changed on 5mx)
+
+re:
+---
+> --  serial
+---
+        UARTs integrated on main ASICS.  Eiger only had one, Windy has two.
+
+re:
+---
+> --  irda
+---
+        see the bit about UARTs - same UARTs used for RS232 and talking to
+IRDA.
+
+re:
+---
+> --  power management/monitoring
+---
+        hmm.  5, 5mx have voltmeters (same ADC as pointer).  Revo has dedicated
+current counter, talks via GPIO to main ASIC with a very slow
+asynchronous serial protocol.
+
+re:
+---
+> --  timers
+> * Which of these are the same as series5?
+---
+        same as before.
+
+re:
+---
+> * Config used for the SA1100 and support.
+---
+        how many ports are going here?  the people to contact would be Psion
+Enterprise as it's really more their turf.
+
+
+re:
+---
+> * "ETNA" specs (this is the main ASIC, AFAIK)
+---
+        no, rubbish.  ETNA is a helper ASIC.  chip code names: Eiger,
+Windermere and SA1100 (affectionately known as Sally), which correspond
+to 5, 5mx and Revo, and S7 and Net book.
+
+re:
+---
+> * We'd also like the ER5 DDK info/headers - enough to compile arlo
+> "properly".
+---
+        you'll need the E32 tree, this comes with the OCK and DDK.  since i use
+the OCK (something only available to licensees of Symbian), i wouldn't
+know how to obtain a copy of the DDK from Symbian (other than asking
+nicely, but i can't imagine that working when they inevitably ask why
+you want it).  soz.  been speaking to bossman and it looks like you'll
+have to become a Symbian licencee / partner - PSION can't help you here
+because it will violate our agreement with the collective.
+
+
+
+IF YOU'RE INTERESTED:
+        if one individual is prepared to sign an NDA and many other evil
+agreements (IPR etc) we have, i _might_ (not a promise, a lot of red
+tape would have to be cleared and i'd have to speak to a lot of people)
+be able to provide the full Windermere spec for free.
+
+        however if a few people are London based, what may a more attractive
+solution, a few members of the systems team could give a short seminar
+or something along those lines, answering questions in person, giving
+the vital information and so forth...
+
+n.b. both these proposals have to be confirmed with other powers that
+be.
+
+--- --- ---
+  .~.   the way of the Sacred Penguin is the path of
+  /V\   the truly righteous...
+ // \\/
+/(   )  hashaday@littleworld.freeserve.co.uk
+ ^`~'^  http://thor.prohosting.com/~hashaday/
+
+
+_______________________________________________
+Linux-7110-psion mailing list
+Linux-7110-psion@lists.sourceforge.net
+http://lists.sourceforge.net/mailman/listinfo/linux-7110-psion
+
+---------- Forwarded message ----------
+Date: Tue, 08 Aug 2000 18:45:00 +0100
+From: Atish Nazir <hashaday@littleworld.freeserve.co.uk>
+To: Peter Liniker <pl198@doc.ic.ac.uk>
+Subject: Re: [Linux-7110-psion] psion5mx (fwd)
+
+re:
+---
+> Etna is the S5 ASIC, AFAIK.
+---
+        ETNA (aka ASIC12) is the _helper_ ASIC for Eiger (S5) and Windermere
+(5MX).  it adds CF capabilities and some other gubbins.  basically it
+adds more pins to the CPU.
+
+re:
+---
+> Is the S5mx/7 ASIC called Etna? (Although you may not be able to answer
+> this!)
+---
+        the S7 and NetBook uses ASIC14 (aka "that many legged bastard"), which
+has nothing really in common with ETNA other than it was designed by the
+same guy (and uses same VHDL for the timers, copy and paste is a
+wonderful thing).  it's also a helper ASIC, the exact specifics i can't
+be sure of because Enterprise have done a lot of developmental work on
+it...
+
+--- --- ---
+  .~.   the way of the Sacred Penguin is the path of
+  /V\   the truly righteous...
+ // \\/
+/(   )  hashaday@littleworld.freeserve.co.uk
+ ^`~'^  http://thor.prohosting.com/~hashaday/
+
+
+_______________________________________________
+Linux-7110-psion mailing list
+Linux-7110-psion@lists.sourceforge.net
+http://lists.sourceforge.net/mailman/listinfo/linux-7110-psion

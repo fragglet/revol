@@ -1,0 +1,166 @@
+The battery level(s) can be monitored using the auxilary channels of the ADC
+for the touchscreen. Here are some emails which may be useful:
+
+
+From: Simon D Howard <sdh300@ecs.soton.ac.uk>
+To: Tony Lindgren <tony@atomide.com>
+cc: Linux-7110-psion@lists.sourceforge.net
+Subject: Re: [Linux-7110-psion] /proc patch
+Date: Mon, 29 Apr 2002 18:57:35 +0100 (BST)
+
+On Mon, 29 Apr 2002, Tony Lindgren wrote:
+
+> So sounds like your SSI extra channel code might work on 5mx!
+> Can you post it so we can try if you don't have a 5mx?
+
+Well, it wasnt really specific code, I just hacked about with the adc
+code. Currently it listens on the first 2 ports (which give the x, y
+coordinate). If you change the following lines:
+
+       ssi_transmit_data(dev,0xd000);
+       ssi_transmit_data(dev,0x9000);
+
+to
+
+	ssi_transmit_data(dev,0xd000 | 0x2000);
+	ssi_transmit_data(dev,0x9000 | 0x2000);
+
+it ought to read the other channels (according to the adc datasheet
+anyway, it didnt work so it may be that I'm totally wrong). I wrote a
+small program to print the output from /dev/tpanel but I dont have it with
+me right now - I adapted the picogui tpanel code.
+
+Simon
+
+_______________________________________________
+Linux-7110-psion mailing list
+Linux-7110-psion@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux-7110-psion
+
+From: "Thilo Hille" <thilo@resourcery.de>
+To: "Simon D Howard" <sdh300@ecs.soton.ac.uk>,
+    "Tony Lindgren" <tony@atomide.com>
+Subject: Re: [Linux-7110-psion] /proc patch
+Date: Tue, 30 Apr 2002 14:40:02 +0200
+
+gotcha..
+> So sounds like your SSI extra channel code might work on 5mx!
+> Can you post it so we can try if you don't have a 5mx?
+i just tweaked the controlbytes in adc7843.c
+ ssi_transmit_data(dev,0xa400); //channel 3
+ ssi_transmit_data(dev,0xe400); //channel 4
+and voila shows up the battery state on channel three.
+it stays around 2593 when accus inserted and drops down to <20 (needs about
+a 3 minutes).
+i think there are some capacitors discharging slowly this might be faster
+when the external powersupply is disconnected.
+how do we get this into an own driver?
+
+Thilo Hille
+resourcery GbR.
+Habsburgerstr. 11
+79104 Freiburg
+Tel.: 0761-4567807
+Fax.: 0761-4567805
+thilo@resourcery.de
+
+From: "Thilo Hille" <thilo@resourcery.de>
+To: <linux-7110-psion@lists.sourceforge.net>
+Subject: [Linux-7110-psion] power consumtion
+Date: Tue, 30 Apr 2002 14:57:01 +0200
+
+i  just measured the battery current.
+its about 2.74V.
+the adc reports about 2594 (maybe rough mV?)
+
+Thilo Hille
+resourcery GbR.
+Habsburgerstr. 11
+79104 Freiburg
+Tel.: 0761-4567807
+Fax.: 0761-4567805
+thilo@resourcery.de
+
+
+
+_______________________________________________
+Linux-7110-psion mailing list
+Linux-7110-psion@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux-7110-psion
+
+
+From: Simon D Howard <sdh300@ecs.soton.ac.uk>
+To: Thilo Hille <thilo@resourcery.de>
+cc: linux-7110-psion@lists.sourceforge.net
+Subject: Re: [Linux-7110-psion] /proc patch
+Date: Tue, 30 Apr 2002 19:23:27 +0100 (BST)
+
+
+On Tue, 30 Apr 2002, Thilo Hille wrote:
+
+> i just tweaked the controlbytes in adc7843.c
+>  ssi_transmit_data(dev,0xa400); //channel 3
+>  ssi_transmit_data(dev,0xe400); //channel 4
+> and voila shows up the battery state on channel three.
+> it stays around 2593 when accus inserted and drops down to <20 (needs about
+> a 3 minutes).
+> i think there are some capacitors discharging slowly this might be faster
+> when the external powersupply is disconnected.
+
+Good news, this seems to work on my revo too. I found this slightly
+surprising as the email tony quoted suggested the battery monitoring was
+done differently. When charging, it seems to reach a maximum of around
+3950 but drops to around 3500 when its finished. EPOC seems to use
+3950-4000 as its "100%" value too - I get similar readings from its
+battery monitor.
+
+I also get ~2464 (invariant) from the other channel - presumably the
+backup battery.
+
+> how do we get this into an own driver?
+
+"with difficulty" :)
+
+Simon
+
+
+_______________________________________________
+Linux-7110-psion mailing list
+Linux-7110-psion@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux-7110-psion
+
+From: "Thilo Hille" <thilo@resourcery.de>
+To: "Simon D Howard" <sdh300@ecs.soton.ac.uk>
+Cc: <linux-7110-psion@lists.sourceforge.net>
+Subject: Re: [Linux-7110-psion] /proc patch
+Date: Tue, 30 Apr 2002 20:51:00 +0200
+
+hi simon,
+> I also get ~2464 (invariant) from the other channel - presumably the
+> backup battery.
+hmmm i dont have a backupbattery inserted and ch4  shows up ~4084.
+i dont have one at hands for now, but tomorrow i ll try it.
+did you try to remove the backup battery while watching the 4th channel?
+(hey, its like tv :)
+i really forgot about the backupbattery. i removed it 2 month ago and as id
+never used epoc since than i never needed it.
+
+greetingz
+
+Thilo Hille
+resourcery GbR.
+Habsburgerstr. 11
+79104 Freiburg
+Tel.: 0761-4567807
+Fax.: 0761-4567805
+thilo@resourcery.de
+
+_______________________________________________
+Linux-7110-psion mailing list
+Linux-7110-psion@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux-7110-psion
+
+
+
+
+

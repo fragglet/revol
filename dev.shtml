@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd"> 
+
+<html>
+
+<!--#include virtual="header"-->
+
+<h2> Development Stuff </h2>
+
+<p>
+Here is some stuff I have written for Revo/Psion Linux:
+</p>
+
+<ul>
+<li> The <a href="spkg.shtml">spkg</a> package manager
+<li> <a href="psionconf.shtml">PsionConf</a>: A small PicoGUI Psion Linux 
+     configuration program
+<li> <a href="picotone.shtml">PicoTone</a>: a touch tone phone dialer
+<li> <a href="dev/psionw_sound.c">Kernel Sound Driver</a>: Now in the -5mx
+     patch tree
+</ul>
+
+<hr width="50%">
+
+<a href="dev/pdf/">Various gathered information</a>: 
+This is mostly information (datasheets etc) I've gathered about the 
+Windermere hardware and thought people might find useful.
+    
+Note that the <i>Series_5mx_specs.pdf</i> file which Psion kindly provided
+to the linux developers is not available here: it is not to be publicly
+distributed, at Psions request. If you need a copy, post to the 
+Psion Linux mailing list.
+
+<!--#include virtual="footer"-->
+
+</html>
+

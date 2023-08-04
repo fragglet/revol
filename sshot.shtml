@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd"> 
+
+<html>
+
+<!--#include virtual="header"-->
+
+<h2> Screenshots </h2>
+
+<img src="sshot/picogui.png" alt="picogui"> <br>
+<p>
+PicoGUI running on the Revo
+</p>
+
+<img src="sshot/battleship.png" alt="battleship"> <br>
+<p>
+Playing PicoGUI battleship
+</p>
+
+<img src="sshot/aqua.png" alt="aqua theme"> <br>
+<p>
+PicoGUI using the aqua theme
+</p>
+
+<img src="sshot/bx.png" alt="BitchX"> <br>
+<p>
+Logged on to a remote machine and using BitchX
+</p>
+
+<img src="sshot/pine.png" alt="pine"> <br>
+<p>
+Logged on to a remote machine and using pine to read mail
+</p>
+
+<img src="sshot/omnibar.png" alt="omnibar"> <br>
+<p>
+Omnibar running with a menu open showing the list of installed
+programs.
+</p>
+
+<img src="sshot/sopwith5.png" alt="sopwith">
+<p>
+I ported <a href="http://fraggle.despayre.org:81/stuffage/sopwith/">
+Sopwith</a> to the revo framebuffer
+</p>
+
+<img src="sshot/emacs.png" alt="emacs">
+<p>
+This is <a href="http://www.jasspa.com/">microemacs</a> running in a
+PicoGUI pterm window.
+</p>
+
+<p>
+<a href="sshot/">more random screenshots</a>
+</p>
+
+<!--#include virtual="footer"-->
+
+</html>
+

@@ -1,0 +1,17 @@
+1.1:
+        add:
+                pgmon (network usage monitor)
+                picomail
+        add themes:
+                lcdtux (lcdgray with tux background)
+                classique (macos platinum theme)
+        removed:        
+                pspawn (obsolete from testing)
+                imgview (was broken)
+        omnibar now includes power off menu item
+                (uses /proc/psionw/state)
+        kernel includes my kernel patches for sound and 
+                /proc/psionw additions
+
+1.0: 
+        initial version

@@ -1,0 +1,41 @@
+89a90
+>    static struct tpanel_sample old_ts = {0,0,0};
+92c93
+<    int trigger, x, y;
+---
+>    int trigger;
+113,114d113
+<    x = ts.x;
+<    y = ts.y;
+116,120c115,139
+<    /* Converte to screen coordinates... */
+<    x = ( ( ts.x - cal->min_x ) * cal->x_res / ( cal->max_x - cal->min_x ) );
+<    y = ( ( ts.y - cal->min_y ) * cal->y_res / ( cal->max_y - cal->min_y ) );
+<    
+<    infilter_send_pointing(PG_TRIGGER_PNTR_STATUS,x,y,ts.state,NULL);
+---
+>    /* if pointer is up, keep the cursor position from when it was up */
+>    if (!ts.state) {
+>       ts.x = old_ts.x;
+>       ts.y = old_ts.y;
+>    } else {
+>       /* Converte to screen coordinates... */
+>       ts.x = ((ts.x - cal->min_x) * cal->x_res / (cal->max_x - cal->min_x));
+>       ts.y = ((ts.y - cal->min_y) * cal->y_res / (cal->max_y - cal->min_y));
+>    }
+> 
+>    /* if nothing has changed, dont send an event */
+>    if (ts.state == old_ts.state && ts.x == old_ts.x && ts.y == old_ts.y)
+>       return;
+> 
+>    if (old_ts.state && !ts.state)
+>       infilter_send_pointing(PG_TRIGGER_UP, ts.x, ts.y, ts.state, NULL);
+>    else if (!old_ts.state && ts.state)
+>       infilter_send_pointing(PG_TRIGGER_DOWN, ts.x, ts.y, ts.state, NULL);
+> 
+>    if (ts.x != old_ts.x || ts.y != old_ts.y)
+>       infilter_send_pointing(PG_TRIGGER_MOVE, ts.x, ts.y, ts.state, NULL);
+> 
+>    /* save ts for next time */
+>    old_ts = ts;
+> 

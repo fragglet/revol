@@ -1,0 +1,31 @@
+
+   ETNA       CF     CLPS7110        Name               Description
+3509-0169-02                   Memory      I/O
+(C)PSION PLC
+A12 R02 NL
+9732M3006
+
+Pin 1   <-> Pin 47              D08
+Pin 2   <-> Pin 48              D09
+Pin 3   <-> Pin 49              D10
+Pin 4   <-> Pin 27              D11
+Pin 5   <-> Pin 28              D12
+Pin 6   <-> Pin 29              D13
+Pin 7   <-> Pin 30              D14
+Pin 8   <-> Pin 31              D15
+Pin 9   <--        Pin 208            CS4         Expansion select 4 (PCMCIA 0)
+Pin 10  <--        Pin 1              CS5         Expansion select 5 (PCMCIA 1)
+Pin 11  <--        Pin 206           NCS2         ROM select 2 (Etna registers)
+Pin 12                          GND
+Pin 13                          VCC
+Pin 14  --> Pin 45              BVD2     -SPKR    n/a or speaker
+Pin 15  --> Pin 45              BVD2     -SPKR    n/a or speaker
+Pin 16  <-- Pin 24              WP       -IOIS16  Write protect or 16-bit I/O
+Pin 17  <-- Pin 42              -WAIT             Wait
+Pin 18  <-- Pin 33              -VS1              Voltage select 1
+Pin 19  <-- Pin 40              -VS2              Voltage select 2
+Pin 20  <-- Pin 26              -CD1              Card detect (grounded in CF)
+Pin 21      Pin 50              GND
+Pin 22  <-- Pin 37              RDY/-BSY -IREQ    Card ready or interrupt REQ
+Pin 23     
+Pin 100 <-- Pin 25              -CD2              Card detect (grounded in CF)

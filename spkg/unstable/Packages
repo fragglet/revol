@@ -1,0 +1,127 @@
+Package: basesystem
+Filename: basesystem-2.0.tar.gz
+MD5sum: a52e66e552085985630c596884cff749
+Size: 2819
+Description: Base file system files
+Version: 2.0
+
+Package: uclibc
+Filename: uclibc-cvs020321.tar.gz
+MD5sum: f3b2344e894beda71cfdc15a6c467150
+Size: 154328
+Description: The uClibc C library
+Description: The uClibc C library is a small C library for embedded systems.
+Description: See http://www.uclibc.org/
+Version: cvs020321
+
+Package: busybox
+Filename: busybox-0.62.2.tar.gz
+MD5sum: 0e1a2a905af594b3701e9522d8324265
+Size: 114704
+Description: The Swiss Army Knife of Embedded Linux
+Description: BusyBox combines tiny versions of many common UNIX utilities
+Description: into a single small executable.
+Description: See http://www.busybox.net/
+Version: 0.62.2
+
+Package: picogui
+Filename: picogui-cvs021009.tar.gz
+MD5sum: 0be451aa224b7bcbf9437de5b78064d8
+Size: 237465
+Description: The PicoGUI window system.
+Description: PicoGUI is a small flexible GUI originally designed for
+Description: use on embedded systems.
+Version: cvs021009
+
+Package: picogui-games
+Filename: picogui-games-cvs021009.tar.gz
+MD5sum: 28cfe02f4762f2442daa6ef01a0dce2a
+Size: 8792
+Description: A small collection of games for PicoGUI
+Depend: picogui
+Version: cvs021009
+
+Package: picogui-utils
+Filename: picogui-utils-cvs021009.tar.gz
+MD5sum: 5744515d6d57b0f5b3a3c9c5d8ed6629
+Size: 9558
+Description: Some small utilities for PicoGUI
+Depend: picogui
+Version: cvs021009
+
+Package: picogui-themes
+Filename: picogui-themes-cvs021009.tar.gz
+MD5sum: 502ab63865a82b55150fd38a90db4a36
+Size: 23225
+Description: Some extra themes for picogui
+Depend: picogui
+Version: cvs021009
+
+Package: psionconf
+Filename: psionconf-1.0.0.tar.gz
+MD5sum: 35989ed9e4ff22654654c041759b7d61
+Size: 8003
+Description: Psilinux config utility for PicoGUI
+Depend: picogui
+Version: 1.0.0
+
+Package: sopwith
+Filename: sopwith-1.5.0.tar.gz
+MD5sum: 7be25c6e913b2d4219fcbc64cadda4e7
+Size: 33025
+Description: Classic biplane shoot 'em up
+Version: 1.5.0
+
+Package: irattach
+Filename: irattach-0.9.13.tar.gz
+MD5sum: 0e295be75da3daeef4336343367fa371
+Size: 4635
+Description: IrDA attach util
+Description: From the irdautils package.
+Version: 0.9.13
+
+Package: slattach
+Filename: slattach-1.60.tar.gz
+MD5sum: 80c0a494c4f4b99ef9eae0c1057e2474
+Size: 6768
+Description: slattach for SLIP connections 
+Description: From the net-tools package.
+Version: 1.60
+
+Package: picotone
+Filename: picotone-0.2.0.tar.gz
+MD5sum: b59f6d7962038b4f70850d46250fc882
+Size: 3461
+Description: A small DTMF tone dialer for PicoGUI
+Depend: picogui
+Version: 0.2.0
+
+Package: termcap
+Filename: termcap-2.0.8.tar.gz
+MD5sum: 71a09ce62a32fa6a5d91bc9ad2673a4e
+Size: 7195
+Description: The termcap library providing an API for terminal access
+Version: 2.0.8
+
+Package: microemacs
+Filename: microemacs-0212.tar.gz
+MD5sum: a5e24114a48a5a44bfc46beb7ec14103
+Size: 248774
+Description: Microemacs is a tiny version of the Emacs text editor
+Depend: termcap
+Version: 0212
+
+Package: netcat
+Filename: netcat-1.10.tar.gz
+MD5sum: 8a28373b9c046811bf5ad22ce1fce3f8
+Size: 9353
+Description: netcat network piping utility
+Version: 1.10
+
+Package: tictac
+Filename: tictac-0.5.tar.gz
+MD5sum: 71083fbafd40017ee5a5fac6d2c65144
+Size: 2282
+Description: tic-tac-toe
+Version: 0.5
+

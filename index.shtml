@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd"> 
+
+<html>
+
+<!--#include virtual="header"-->
+
+<img align="right" src="revo.png" alt="Psion Revo">
+<p>
+Revol is a Linux Distribution for the Psion Revo.
+</p>
+
+<p>
+Please note: this is designed for the original Revo, although it
+runs on the Revo+ as well. 
+If you have a Revo+ or
+a Diamond Mako, you may wish to try 
+<a href="http://zeniiia.linux.org.uk/pub/distributions/revo/revolinux.nm.ru/">
+this distribution</a> instead which makes use of the extra memory to fit
+some useful things in. It will probably not run on the 5MX. If you have 
+a 5MX, you may wish to try
+<a href="http://www.psilinux.org/">the Psilinux project</a> which is
+developing a distro.
+
+</p>
+
+<p>
+Version 1.1 is <a href="download.shtml">available for download!</a>
+I have managed to fit quite a few programs into the Revos memory.
+Please feel free to try this out and send comments/suggestions/queries
+to me.
+</p>
+
+<p>
+Version 2.0 is under development and unlike previous versions will 
+be package based using <a href="spkg.shtml">spkg</a>. You can browse
+a list of packages <a href="pkglist.shtml">here</a>.
+</p>
+
+
+<!--#include virtual="footer"-->
+
+</html>
+

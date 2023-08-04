@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<!--#include virtual="header" -->
+
+<h3> FAQ </h3>
+
+<ul>
+
+<li> <b> Did you write this? </b>
+
+<p>
+Well, not really. Its related to  <a href="http://psilinux.org/">Psilinux</a>
+which is a project to port linux to Psions.
+When I started, the port to the Revo was pretty much 
+complete, but no decent distribution existed for it (though there were
+some for the Revo+).
+The focus of Psilinux is on the 5MX, so 
+I put this distribution together to better support the Revo.
+</p>
+
+<li> <b> Can I keep all my existing files in EPOC while I try linux? </b>
+
+<p>
+Any files on your palmtop will be lost when you boot linux. It is advised
+that you make backups of any essential files before you install. You will
+need quite a bit of free space for the install, so you may have to delete 
+some files to install.
+</p>
+
+<li> <b> How can I change virtual terminal? </b>
+
+<p>
+The 'menu' key is generally the same as the 'alt' key on PC
+keyboards. You can switch console by pressing menu-1,2,3 etc.
+Similarly, pressing ctrl-menu-backspace equates to ctrl-alt-del
+and will cause init to reboot the system.
+</p>
+
+<p>
+Console 1 provides a default shell, you can start extra shells on
+consoles 2-5. Consoles 9 and 10 show the syslog output and kernel
+messages.
+</p>
+
+<li> <b> How do I type a pipe (|) ? </b>
+
+<p>
+Fn-T.
+</p>
+
+<li> <b> You always run as root! Dont you know this is bad practice? </b>
+
+<p>
+Maybe on desktop/server machines, but this is a PDA. I decided it was
+pointless to bother with multiple users on a palmtop. If you damage
+the system, you can simply install it again fairly quickly.
+</p>
+
+<li> <b> Why does the filesystem have a peculiar layout? </b>
+
+<p>
+I wanted to keep the filesystem simple so the layout is slightly different to 
+a normal linux distribution.  I have tried to keep it generally similar to
+the usual layout, however.
+</p>
+
+<li> <b> How do I start PicoGUI? </b>
+
+<p>
+From the console, type 'P'. This should automatically start PicoGUI.
+</p>
+
+<li> <b> How do I change the PicoGUI theme? </b>
+
+<p>
+Edit /etc/pgserver.conf and change the themes= line. There are several
+themes to choose from in /pgui/themes.
+</p>
+
+<li> <b> How can I set up a serial connection to my desktop linux machine? </b> 
+
+<p>
+There is a copy of pppd included which you can use to set up a PPP link
+if you wish. However, I usually use the simpler SLIP protocol.
+</p>
+
+<p> 
+Firstly, on your desktop machine (you need SLIP support in the kernel
+or the SLIP kernel modules loaded), execute the following commands as
+root:
+</p>
+
+<pre>
+slattach -s 115200 /dev/ttyS0 &
+ifconfig sl0 10.0.2.1 pointopoint 10.0.2.2
+</pre>
+
+<p>
+(This assumes the revo cradle is on COM1, substitute ttyS0 for your 
+serial port otherwise)
+</p>
+
+<p>
+Next, on the Revo, simply execute /bin/connect. This performs similar 
+commands to the ones above to set up the link on the Revo side. 
+Hopefully, if the link is running you should be able to test the link
+by pinging the revo (ip 10.0.2.2) from the desktop machine. You can
+perform simple transfers between the desktop and revo using netcat 
+(nc).
+</p>
+
+<li> <b> Shouldnt this be called GNU/Linux? </b>
+<p>
+Actually, no. The argument for GNU/Linux is that most linux systems
+are a modified version of the GNU system which has been around for
+longer than linux has. However, Revol uses embedded versions of 
+the standard parts of the operating system normally provided
+by GNU tools (uclibc instead of glibc, busybox instead of the GNU
+fileutils etc). So Revol is a non-GNU linux system and it would be
+incorrect to call it GNU/Linux.
+</p>
+
+</ul>
+
+<!--#include virtual="footer" -->
+</html>
+
